@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(
+    ['prefix' => 'dashboard'], function(){
+        Route::resources([
+            'productos' => ProductController::class
+        ]);
+    });
