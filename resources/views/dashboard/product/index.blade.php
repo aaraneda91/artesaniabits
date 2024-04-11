@@ -26,7 +26,7 @@
                         <td> {{ $product->name }} </td>
                         <td> {{ $product->description }} </td>
                         <td> {{ $product->price }} </td>
-                        <td> {{ $product->image }} </td>
+                        <td> <img src="{{ url('image').'/'.$product->image  }}" width="80" height="80"> </td>
                         <td><a href="{{ route('product.edit', $product) }}">Editar</a>  </td>
                     </tr>
                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\product\StoreProductRequest;
+use App\Http\Requests\product\StorePutRequest;
 use App\Models\Dashbaord\Product;
 use Illuminate\Http\Request;
 
@@ -55,9 +56,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreProductRequest $request, Product $product)
+    public function update(StorePutRequest $request, Product $product)
     {
         $data = $request->validated();
+        if ( isset($data["image"])) {
+            $data["image"] = $filename = time().'.'.$data["image"]->extension();
+            $request->image->move(public_path("image"), $filename); # $request->image tiene el valor del campo sin validar.
+        }
         $product->update($data);
         return to_route('product.index');
     }

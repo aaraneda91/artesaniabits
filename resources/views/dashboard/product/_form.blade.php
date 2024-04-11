@@ -11,13 +11,13 @@ $config = [
     <x-adminlte-input name="name" label="Nombre" value="{{ old('name', $product->name) }}"
         fgroup-class="col-md-6" disable-feedback/>
 
-    <x-adminlte-input name="description" label="Descripcion" value="{{ old('name', $product->description) }}"
+    <x-adminlte-input name="description" label="Descripcion" value="{{ old('description', $product->description) }}"
         fgroup-class="col-md-6" disable-feedback/>
 
-    <x-adminlte-input name="price" label="Precio" value="{{ old('name', $product->price) }}"
+    <x-adminlte-input name="price" label="Precio" value="{{ old('price', $product->price) }}"
         fgroup-class="col-md-6" disable-feedback/>
     
-    <x-adminlte-input name="image" label="Imágen" value="{{ old('name', $product->image) }}"
-        fgroup-class="col-md-6" disable-feedback/>
-        <x-adminlte-input-file-krajee name="kifBasic"/>
+    <!--<x-adminlte-input name="image" type="file" label="Imágen" value="{{ old('image', $product->image) }}"
+        fgroup-class="col-md-6" disable-feedback/>-->
+        <x-adminlte-input-file-krajee name="image"/>
 </div>

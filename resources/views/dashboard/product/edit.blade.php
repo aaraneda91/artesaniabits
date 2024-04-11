@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('product.update', $product) }}" method="post">
+    <form action="{{ route('product.update', $product) }}" method="post" enctype="multipart/form-data">
         @method("PATCH")
         <div class="card card-primary">
             <div class="card-header">
