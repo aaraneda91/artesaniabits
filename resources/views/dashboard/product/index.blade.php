@@ -1,11 +1,5 @@
-@extends('adminlte::page')
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Lista de productos</h1>
-@stop
-
-@section('content')
+@extends('home')
+@section('contenido')
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Nuevo producto</h3>
@@ -18,7 +12,9 @@
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
+                    <th>Id</th>
                     <th>Nombre</th>
+                    <th>Descripcion</th>
                     <th>Precio</th>
                     <th>Imagen</th>
                     <th></th>
@@ -26,7 +22,12 @@
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
+                        <td> {{ $product->id }} </td>
                         <td> {{ $product->name }} </td>
+                        <td> {{ $product->description }} </td>
+                        <td> {{ $product->price }} </td>
+                        <td> {{ $product->image }} </td>
+                        <td><a href="{{ route('product.edit', $product) }}">Editar</a>  </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -34,7 +35,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="{{ route('product.create') }}" class="btn btn-primary">Nuevo producto</a>
+            <a href="{{ route('product.create') }}" class="btn btn ">Nuevo producto</a>
         </div>
         <!-- /.card-footer -->
     </div>

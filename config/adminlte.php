@@ -111,7 +111,7 @@ return [
 
     'preloader' => [
         'enabled' => true,
-        'mode' => 'fullscreen',
+        'mode' => 'content',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -317,7 +317,7 @@ return [
         ],
         [
             'text' => 'Productos',
-            'url' => 'dashboard/product',
+            'route' => 'product.index',
             'icon' => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],

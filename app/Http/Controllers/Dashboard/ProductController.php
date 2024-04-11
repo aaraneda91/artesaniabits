@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\product\StorePostRequest;
+use App\Http\Requests\product\StoreProductRequest;
 use App\Models\Dashbaord\Product;
 use Illuminate\Http\Request;
 
@@ -30,7 +30,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StoreProductRequest $request)
     {
         Product::create($request->validated());
         return to_route('product.index');
@@ -47,17 +47,19 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view('dashboard.product.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+        $product->update($data);
+        return to_route('product.index');
     }
 
     /**
