@@ -322,6 +322,12 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
+        [
+            'text' => 'Productos',
+            'url' => 'dashboard/product',
+            'icon' => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -424,6 +430,41 @@ return [
     */
 
     'plugins' => [
+        'KrajeeFileinput' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/css/fileinput.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/themes/explorer-fa5/theme.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/js/fileinput.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/themes/fa5/theme.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/themes/explorer-fa5/theme.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/krajee-fileinput/js/locales/es.js',
+                ],
+            ],
+        ],
         'Datatables' => [
             'active' => false,
             'files' => [

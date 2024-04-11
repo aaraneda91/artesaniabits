@@ -23,7 +23,7 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        return view('dashboard.product.create');
+        return view('dashboard.product.create', compact('product'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Product::create($request->validate());
+        Product::create($request->validated());
         return to_route('product.index');
     }
 
