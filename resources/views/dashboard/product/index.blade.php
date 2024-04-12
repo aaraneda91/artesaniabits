@@ -35,6 +35,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
+            {!! $products->links() !!}
             <a href="{{ route('product.create') }}" class="btn btn-primary">Nuevo producto</a>
         </div>
         <!-- /.card-footer -->
