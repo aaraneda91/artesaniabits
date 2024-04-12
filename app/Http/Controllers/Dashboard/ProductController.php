@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::paginate(4);
         return view('dashboard.product.index', compact('products'));
     }
 
@@ -33,7 +33,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        $data = $request->validated();
+        if ( isset($data["image"])) {
+            $data["image"] = $filename = time().'.'.$data["image"]->extension();
+            $request->image->move(public_path("image"), $filename); # $request->image tiene el valor del campo sin validar.
+        }
+        Product::create($data);
         return to_route('product.index');
     }
 

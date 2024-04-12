@@ -8,7 +8,7 @@
 @section('content')
     <form action="{{ route('product.update', $product) }}" method="post" enctype="multipart/form-data">
         @method("PATCH")
-        <div class="card card-primary">
+        <div class="card card-info">
             <div class="card-header">
                 <h3 class="card-title">Actualizar producto</h3>
                 <div class="card-tools">
@@ -24,7 +24,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <button class="btn btn-primary">Guardar</button>
+                <button class="btn btn-primary">Actualizar</button>
             </div>
             <!-- /.card-footer -->
         </div>

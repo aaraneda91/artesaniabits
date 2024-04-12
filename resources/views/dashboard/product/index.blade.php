@@ -1,8 +1,8 @@
 @extends('home')
 @section('contenido')
-    <div class="card card-primary">
+    <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Nuevo producto</h3>
+            <h3 class="card-title">Lista productos</h3>
             <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
             </div>
@@ -25,7 +25,7 @@
                         <td> {{ $product->id }} </td>
                         <td> {{ $product->name }} </td>
                         <td> {{ $product->description }} </td>
-                        <td> {{ $product->price }} </td>
+                        <td> ${{ number_format($product->price) }} </td>
                         <td> <img src="{{ url('image').'/'.$product->image  }}" width="80" height="80"> </td>
                         <td><a href="{{ route('product.edit', $product) }}">Editar</a>  </td>
                     </tr>
@@ -35,7 +35,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <a href="{{ route('product.create') }}" class="btn btn ">Nuevo producto</a>
+            <a href="{{ route('product.create') }}" class="btn btn-primary">Nuevo producto</a>
         </div>
         <!-- /.card-footer -->
     </div>

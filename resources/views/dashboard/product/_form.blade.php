@@ -19,5 +19,5 @@ $config = [
     
     <!--<x-adminlte-input name="image" type="file" label="Imágen" value="{{ old('image', $product->image) }}"
         fgroup-class="col-md-6" disable-feedback/>-->
-        <x-adminlte-input-file-krajee name="image"/>
+        <x-adminlte-input-file-krajee name="image" value="{{ old('image', $product->image) }}"/>
 </div>
