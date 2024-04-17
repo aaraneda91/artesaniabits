@@ -321,6 +321,12 @@ return [
             'route' => 'product.index',
             'icon' => 'far fa-fw fa-file',
             'label_color' => 'success',
+        ],
+        [
+            'text' => 'Categorias',
+            'route' => 'category.index',
+            'icon' => 'far fa-fw fa-file',
+            'label_color' => 'success',
         ]
     ],
 

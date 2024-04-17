@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\product\StoreProductRequest;
 use App\Http\Requests\product\StorePutRequest;
-use App\Models\Dashbaord\Product;
+use App\Models\Dashboard\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
