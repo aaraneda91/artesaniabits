@@ -10,5 +10,10 @@ class Product extends Model
     use HasFactory;
 
     // campos que pueden ser insertados
-    protected $fillable = ['name','description','image','price'];
+    protected $fillable = ['name','description','image','price','category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

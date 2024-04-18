@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\product\StoreProductRequest;
 use App\Http\Requests\product\StorePutRequest;
+use App\Models\Dashboard\Category;
 use App\Models\Dashboard\Product;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(4);
+        $products = Product::paginate(10);
         return view('dashboard.product.index', compact('products'));
     }
 
@@ -55,7 +56,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('dashboard.product.edit', compact('product'));
+        $categories = Category::pluck('id','name');
+        return view('dashboard.product.edit', compact('product','categories'));
     }
 
     /**

@@ -16,6 +16,7 @@
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Precio</th>
+                    <th>Categoria</th>
                     <th>Imagen</th>
                     <th></th>
                 </thead>
@@ -26,6 +27,11 @@
                         <td> {{ $product->name }} </td>
                         <td> {{ $product->description }} </td>
                         <td> ${{ number_format($product->price) }} </td>
+                        <td> 
+                            @if (isset($product->category->name))
+                            {{ $product->category->name }} 
+                            @endif 
+                        </td>
                         <td> <img src="{{ url('image').'/'.$product->image  }}" width="80" height="80"> </td>
                         <td><a href="{{ route('product.edit', $product) }}">Editar</a>  </td>
                     </tr>

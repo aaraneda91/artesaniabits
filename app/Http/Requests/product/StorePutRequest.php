@@ -25,7 +25,8 @@ class StorePutRequest extends FormRequest
             "name" => "required|min:5|max:100",
             "description" => "required|max:200",
             "price" => "required",
-            "image" => "mimes:jpeg,jpg,png|max:10240"
+            "image" => "mimes:jpeg,jpg,png|max:10240",
+            "category_id" => "required"
         ];
     }
 }
