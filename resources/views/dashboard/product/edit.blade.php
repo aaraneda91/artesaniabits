@@ -20,7 +20,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                @include('dashboard.product._form')
+                @include('dashboard.product._form',['task' => 'edit'])
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

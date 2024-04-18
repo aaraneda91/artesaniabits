@@ -25,8 +25,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = Category::pluck('id','name');
         $product = new Product();
-        return view('dashboard.product.create', compact('product'));
+        return view('dashboard.product.create', compact('product','categories'));
     }
 
     /**
