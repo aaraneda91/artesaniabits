@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(
-    ['prefix' => 'admin/dashboard', 'middleware' => 'auth', 'admin'], function(){
+    ['prefix' => 'admin', 'middleware' => 'auth', 'admin'], function(){
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::resources([
             'product' => ProductController::class,
             'category' => CategoryController::class
