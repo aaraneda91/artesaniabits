@@ -318,20 +318,20 @@ return [
         [
             'text' => 'Dashboard',
             'route' => 'home',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-tachometer-alt',
             'label_color' => 'success',
         ],
         ['header' => 'Inventario'],
         [
             'text' => 'Productos',
             'route' => 'product.index',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-table',
             'label_color' => 'success',
         ],
         [
             'text' => 'Categorias',
             'route' => 'category.index',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-table',
             'label_color' => 'success',
         ]
     ],
