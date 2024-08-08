@@ -27,4 +27,23 @@ class HomeController extends Controller
         $products = Product::count();
         return view('dashboard.index', compact('products'));
     }
+
+    public function colecciones(){
+        $productos = Product::all()->reject(function (Product $product) {
+            return $product->name === 'Gengar';
+        })->map(function (Product $productos) {
+            return strtoupper($productos->name);
+        });
+        $productos = $productos->add('Lugia');
+        //print_r($productos->toJson());
+        $var = [
+            'numbers' => [1,2,3], 
+            'pokemon' => ['Gengar', 'Charizard', 'Lugia', 'Mewtwo']];
+        //print_r($collection);
+
+        $ex = collect(['nombre','edad']);
+        $ex = $ex->combine(['ariel',10]);
+        dd($ex);
+    }
+    
 }

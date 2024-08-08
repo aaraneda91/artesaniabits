@@ -7,6 +7,7 @@ use App\Http\Requests\product\StoreProductRequest;
 use App\Http\Requests\product\StorePutRequest;
 use App\Models\Dashboard\Category;
 use App\Models\Dashboard\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -81,5 +82,17 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function products(Request $request)
+    {
+        $products = Product::all();
+        return response()->json($products);
+    }
+
+    public function productsPost(Request $request)
+    {
+        
+        return response()->json($request);
     }
 }
