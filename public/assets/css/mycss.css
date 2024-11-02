@@ -1,0 +1,9 @@
+.contenedor-icono svg {
+   
+    width: 30px;
+    height: 30px;
+    color: #ffff;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 7px;
+}

@@ -15,6 +15,7 @@
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link href="https://cdn.datatables.net/v/bs5/dt-2.0.5/datatables.min.css" rel="stylesheet">
+    <link href="{{asset('assets/css/mycss.css')}}" rel="stylesheet">
 @stop
 
 @section('js')
