@@ -9,6 +9,7 @@ use App\Models\Dashboard\Category;
 use App\Models\Dashboard\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
-        return view('dashboard.product.index', compact('products'));
+        $categories = Category::all();
+        return view('dashboard.product.index', compact('products', 'categories'));
     }
 
     /**
@@ -48,9 +50,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
+        $product = Product::find($id);
+        return response()->json($product);
     }
 
     /**
