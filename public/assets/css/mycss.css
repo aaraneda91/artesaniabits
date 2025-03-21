@@ -7,3 +7,16 @@
     vertical-align: middle;
     border-radius: 7px;
 }
+
+.card-header {
+    background-color: steelblue;
+    color: #ffff;
+}
+
+.btn-primary {
+    background-color: steelblue;
+}
+
+.btn-primary:hover {
+    background-color: rgb(28, 111, 179);
+}

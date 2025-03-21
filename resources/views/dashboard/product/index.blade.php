@@ -1,7 +1,8 @@
 @extends('home')
 @section('contenido')
     <div class="card">
-        <div class="card-header" style="background-color: #203973; color: #fff">
+        <!--<div class="card-header" style="background-color: #203973; color: #fff">-->
+        <div class="card-header primary">
             <h3 class="card-title">Productos</h3>
             <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
