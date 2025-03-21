@@ -1,7 +1,7 @@
 @extends('home')
 @section('contenido')
     <div class="card">
-        <div class="card-header" style="background-color: #700093; color: #fff">
+        <div class="card-header" style="background-color: #203973; color: #fff">
             <h3 class="card-title">Productos</h3>
             <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
@@ -10,36 +10,32 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-bordered" id="myTable">
+            <table class="table table-bordered" id="dtProductos">
                 <thead>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Precio</th>
                     <th>Categoria</th>
-                    <th>Imagen</th>
                     <th></th>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
-                        <td> {{ $product->id }} </td>
-                        <td> {{ $product->name }} </td>
-                        <td> {{ $product->description }} </td>
-                        <td> ${{ number_format($product->price) }} </td>
-                        <td> 
+                        <td id="tdProductId_{{ $product->id }}" > {{ $product->id }} </td>
+                        <td id="tdProductName_{{ $product->id }}"> {{ $product->name }} </td>
+                        <td id="tdProductDesc_{{ $product->id }}"> {{ $product->description }} </td>
+                        <td id="tdProductPrice_{{ $product->id }}"> ${{ number_format($product->price) }} </td>
+                        <td id="tdProductCategory_{{ $product->id }}"> 
                             @if (isset($product->category->name))
                             {{ $product->category->name }} 
                             @endif 
                         </td>
-                        <td> <img src="{{ url('image').'/'.$product->image  }}" width="80" height="80"> </td>
+                        <!--<td> <img src="{{ url('image').'/'.$product->image  }}" width="80" height="80"> </td>-->
                         <!--<td><a href="{{ route('product.edit', $product) }}">Editar</a>  </td>-->
                         <td>
-                            <div  id="btnEdit" type="button" class="btn btn-primary contenedor-icono" data-toggle="modal" data-target="#exampleModal_{{ $product->id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                </svg>
+                            <div  id="btnEdit" type="button" class="btn btn-sm btn-primary contenedor-icono" data-toggle="modal" data-target="#exampleModal_{{ $product->id }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </div>
                         </td>
                         <!-- Modal -->
@@ -82,20 +78,49 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        /*
-        Swal.fire({
-            title: "Hola Mundo",
-            icon: "success"
-        });
-        $("#btnEdit").click(function(){
-            $.get("http://artesaniabits.test/admin/product/1", function(data, status){
-                $("#txtProductName").val(data.name);
-                $("#txtProductDesc").val(data.description);
-                $("#txtProductPrecio").val(data.price);
-                $("#slcCategories").val(data.category_id)
+
+        $(".btn_guardar_cambios").click(function(){
+
+            var id = $(this).data('product-id');
+            var name = $('#txtProductName_'+id).val();
+            var description = $('#txtProductDesc_'+id).val();
+            var price = $('#txtProductPrecio_'+id).val();
+            var category_id = $('#slcCategories_'+id).val();
+            // Obtén la URL base de Blade con un marcador de posición
+            var baseUrl = "{{ route('product.update', 'REPLACE_ID') }}";
+            // Reemplaza el marcador de posición con el valor real de 'id'
+            var url = baseUrl.replace('REPLACE_ID', id);
+
+            var data = {
+                name: name,
+                description: description,
+                price: price,
+                category_id: category_id,
+                _token: '{{csrf_token()}}'
+            };
+
+            $.ajax({
+                type: "put",
+                url: url,
+                data: data,
+                success: function () {
+                    $("#tdProductName_"+id).html(name)
+                    $("#tdProductDesc_"+id).html(description)
+                    $("#tdProductPrice_"+id).html(price)
+                    Swal.fire({
+                        title: "Guardado",
+                        icon: "success"
+                    });
+                    
+                },
+                error: function (msg) {
+                    Swal.fire({
+                        title: "Error " + msg,
+                        icon: "error"
+                    });
+                }
             });
         });
-        */
        
     </script>
 @stop

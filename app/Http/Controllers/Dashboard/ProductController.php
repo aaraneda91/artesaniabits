@@ -75,8 +75,8 @@ class ProductController extends Controller
             $data["image"] = $filename = time().'.'.$data["image"]->extension();
             $request->image->move(public_path("image"), $filename); # $request->image tiene el valor del campo sin validar.
         }
-        $product->update($data);
-        return to_route('product.index');
+        //dd($product->id);
+        Product::find($product->id)->update($data);
     }
 
     /**
